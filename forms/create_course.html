@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Add Course </title>
+</head>
+
+<body>
+    <header>
+        <h1>LMS</h1>
+    </header>
+    <form action="/api/courses/create" method="POST" name="form" onsubmit="return validateForm()">
+        <fieldset>
+            <h3>Add New Course</h3>
+            <label>Name</label>
+            <input type="text" id="courseName" name="name" required>
+            <br><br>
+            <label>Code</label>
+            <input type="text" id="courseCode" name="code" required>
+            <br><br>
+            <label>description</label>
+            <input type="text" id="courseDescription" name="description">
+            <br><br>
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+</body>
+
+<script>
+    function validateForm() {
+        var x = document.forms["form"]["name"].value;
+        if (x.length < 5) {
+            alert("Name must be at least 5 characters");
+            return false;
+        }
+        x = document.forms["form"]["code"].value;
+        if (!x.match(/^[a-zA-Z]{3}\d{3}$/)) {
+            alert("Code must match 3 letters followed by 3 numbers");
+            return false;
+        }
+        x = document.forms["form"]["description"].value;
+        if (x.length > 200) {
+            alert("Description at most 200 characters");
+            return false;
+        }
+        return true;
+    }
+</script>

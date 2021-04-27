@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Add Student </title>
+</head>
+
+<body>
+    <header>
+        <h1>LMS</h1>
+    </header>
+    <form action="/api/students/create" method="POST" name="form" onsubmit="return validateForm()">
+        <fieldset>
+            <h3>Add New Student</h3>
+            <label>Name</label>
+            <input type="text" id="courseName" name="name" required>
+            <br><br>
+            <label>Code</label>
+            <input type="text" id="courseCode" name="code" required>
+            <br><br>
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+</body>
+
+<script>
+    function validateForm() {
+        var x = document.forms["form"]["name"].value;
+        if (!x.match(/^[a-zA-Z '-]+$/)) {
+            alert("only letters in both cases, apostrophe and dashes are allowed for Name");
+            return false;
+        }
+        x = document.forms["form"]["code"].value;
+        if (!x.match(/^[\w\d]{7}$/)) {
+            alert("Code must be 7 characters");
+            return false;
+        }
+        return true;
+    }
+</script>
