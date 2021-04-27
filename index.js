@@ -164,5 +164,6 @@ function validateStudent(student) {
 	return schema.validate(student);
 }
 
+const host = '0.0.0.0';
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, host,() => console.log(`Listening on port ${port}...`));
